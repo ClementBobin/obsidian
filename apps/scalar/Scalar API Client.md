@@ -1,23 +1,38 @@
-## Overview
+# 🛠️ Scalar API Client: A Powerful API Testing Tool
 
-Scalar API Client is a powerful API testing tool, similar to Postman, but designed with performance, flexibility, and developer-first principles in mind. It supports features such as watch mode, multiple server management, and cookie handling, making API development and testing seamless.
+Scalar API Client is a **powerful API testing tool**, similar to Postman, but designed with performance, flexibility, and developer-first principles in mind. It supports features such as watch mode, multiple server management, and cookie handling, making API development and testing seamless.
 
-## Key Features
+---
+
+## 🔍 Overview
+
+- **Product Type**: API Testing Tool
+    
+- **Focus**: API development, testing, and management.
+    
+- **Key Uses**: API request handling, environment management, real-time testing, and offline functionality.
+    
+
+---
+
+## 🧠 Key Features
+
+Scalar API Client offers a variety of features to streamline your API development and testing workflow:
 
 ### 🕵️‍♂️ Watch Mode
 
-- Automatically re-runs requests upon changes, streamlining development workflows.
-    ![[Pasted image 20250326093916.png]]
+- Automatically re-runs requests upon changes, streamlining development workflows. ![[Pasted image 20250326093916.png]]
+    
 
 ### 🌍 Multiple Server Support
 
-- Manage and switch between multiple API servers effortlessly.
-    ![[Pasted image 20250326093826.png]]
+- Manage and switch between multiple API servers effortlessly. ![[Pasted image 20250326093826.png]]
+    
 
 ### 🍪 Cookie Management
 
-- Handle authentication and session-based APIs with built-in cookie management.
-    ![[Pasted image 20250326093939.png]]
+- Handle authentication and session-based APIs with built-in cookie management. ![[Pasted image 20250326093939.png]]
+    
 
 ### 🔗 API Framework Integration _(Coming Soon)_
 
@@ -48,13 +63,17 @@ Scalar API Client is a powerful API testing tool, similar to Postman, but design
 
 - Based entirely on OpenAPI Specification, ensuring portability across tools and platforms.
     
+
 ### 🌐 CORS Proxy
 
-- Bypass browser CORS restrictions with Scalar's public proxy.
-    ![[Pasted image 20250326094201.png]]
-- [Check the source code on GitHub](https://github.com/Scalar-API/CORS-Proxy).
+- Bypass browser CORS restrictions with Scalar's public proxy. ![[Pasted image 20250326094201.png]]
+    
+    - [Check the source code on GitHub](https://github.com/Scalar-API/CORS-Proxy).
+        
 
-## Getting Started
+---
+
+## ⚙️ Getting Started
 
 ### Installation
 
@@ -71,42 +90,60 @@ Download Scalar API Client for your platform:
 
 ### Usage
 
-1. **Create a new API request** – Select GET, POST, PUT, DELETE, etc.
-    ![[Pasted image 20250326094233.png]]
+1. **Create a new API request** – Select GET, POST, PUT, DELETE, etc. ![[Pasted image 20250326094233.png]]
+    
 2. **Manage environments** – Define variables for multiple servers.
     
-3. **Enable watch mode** – Auto-refresh on API changes by adding url off [openapi.json](./Scalar%20Integration).
+3. **Enable watch mode** – Auto-refresh on API changes by adding url off [openapi.json](Scalar%20Integration).
     
 4. **Use OpenAPI Integration** – Import/export API specs.
     
 5. **Collaborate** _(Paid)_ – Share requests and tests with teammates.
     
 
-## Comparisons with Postman
+---
 
-| Feature          | Scalar API Client | Postman                     |
-| ---------------- | ----------------- | --------------------------- |
-| Watch Mode       | ✅                 | ❌                           |
-| Multiple Servers | ✅                 | ✅                           |
-| OpenAPI Support  | ✅                 | ✅                           |
-| Offline-First    | ✅                 | ❌ (Cloud Sync Focused)      |
-| Collaboration    | ✅ _(Paid)_        | ✅ _(Paid)_                  |
-| Vendor Lock-In   | ❌ (OpenAPI-Based) | ✅ (Proprietary Collections) |
-| CORS Proxy       | ✅                 | ❌                           |
+## ⚖️ Comparisons with Postman
 
-## Links & Resources
+|Feature|Scalar API Client|Postman|
+|---|---|---|
+|Watch Mode|✅|❌|
+|Multiple Servers|✅|✅|
+|OpenAPI Support|✅|✅|
+|Offline-First|✅|❌ (Cloud Sync Focused)|
+|Collaboration|✅ _(Paid)_|✅ _(Paid)_|
+|Vendor Lock-In|❌ (OpenAPI-Based)|✅ (Proprietary Collections)|
+|CORS Proxy|✅|❌|
 
-- 🔗 [Official Website](https://scalar.com/#api-client)
+---
+
+## 🌍 Explore More
+
+- **[API Frameworks & Integrations](Scalar%20Integration)** — Explore upcoming integrations and framework support.
+
+---
+
+## 📚 Resources
+
+- [Official Website](https://scalar.com/#api-client)
     
-- 📖 [Documentation](https://scalar.com/#docs)
+- [Documentation](https://scalar.com/#docs)
     
-- 🚀 [API Frameworks & Integrations](https://scalar.com/#integrations)
+- [API Frameworks & Integrations](https://scalar.com/#integrations)
+    
+- [CORS Proxy GitHub Repository](https://github.com/Scalar-API/CORS-Proxy)
+    
 
-- 🔧 [CORS Proxy GitHub Repository](https://github.com/Scalar-API/CORS-Proxy)
+---
 
-Scalar API Client is a lightweight, developer-friendly alternative to traditional API clients, ensuring speed, flexibility, and openness. Try it today! 🚀
+## 🏷️ Tags
 
-
-![[Pasted image 20250326094300.png]]
-![[Pasted image 20250326094316.png]]
-![[Pasted image 20250326094336.png]]
+#scalarapi  
+#api-testing  
+#developer-tools  
+#offline-first  
+#crosproxy  
+#watch-mode  
+#openapi  
+#cookie-management  
+#api-collaboration
