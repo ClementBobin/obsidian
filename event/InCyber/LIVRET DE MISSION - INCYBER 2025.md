@@ -1,8 +1,8 @@
 # Mission CyberOps / CyberDev - InCyber 2025
 
-**Nom de l'agent** : I  
+**Nom de l'agent** : Mirage
 **Filière** : SLAM  
-**Nom du groupe** : Valérie, Alex, I  
+**Nom du groupe** : Valérie, Alex, Mirage
 
 **Date de la mission** : 1er avril 2025  
 
@@ -24,8 +24,8 @@ Vous êtes en territoire technologique. Soyez curieux, futé, stratégique. Que 
 
 - **Nom du stand visité** : GitGuardian
 - **Solution présentée** : Identité non humaine et secrets
-- **Lien avec votre spécialité (SLAM/SISR)** : SISR. Pouvoir lier mes Docker aux productions et améliorer la sécurité.
-- **Photo preuve 📸** : ![Photo du stand GitGuardian](asset/image/InCyber/GitGuardian-Forum-InCyber2025.jpg)
+- **Lien avec votre spécialité (SLAM/SISR)** : SLAM. Pouvoir lier mes Docker aux productions et améliorer la sécurité.
+- **Photo preuve 📸** : ![Photo du stand GitGuardian](../../asset/image/InCyber/GitGuardian-Forum-InCyber2025.jpg)
 
 ### ✏️ Mission 2 : Conférence décryptée
 
