@@ -85,5 +85,6 @@
   "Project/home server/Docker": "FabDocker",
   "docker/kubernetes": "FabShieldVirus",
   "Project/home server/security": "RiLockPasswordLine",
-  "Project/home server/news": "FabNewspaper"
+  "Project/home server/news": "FabNewspaper",
+  "event": "FabBlog"
 }
