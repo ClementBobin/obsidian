@@ -1,41 +1,109 @@
-# Vagrant Cheat-Sheet
-## General Management
-COMMAND | DESCRIPTION
----|---
-`vagrant status` | Outputs status of the vagrant machine
-`vagrant global-status` | Outputs status of all vagrant machines
-`vagrant global-status --prune` | Same as above, but prunes invalid entries
+Here is your **Vagrant Cheat-Sheet** with additional sections included:
 
-## Managing VMs
-COMMAND | DESCRIPTION
----|---
-`vagrant init` | Initialize Vagrant with a Vagrantfile and ./.vagrant directory, using no specified base image. Before you can do vagrant up, you'll need to specify a base image in the Vagrantfile.
-`vagrant up` | Starts vagrant environment (also provisions only on the FIRST vagrant up)
-`vagrant halt` | Stops the vagrant machine
-`vagrant suspend` | Suspends a virtual machine (remembers state)
-`vagrant resume` | Resume a suspended machine (vagrant up works just fine for this as well)
-`vagrant ssh` | Sonnects to machine via SSH
-`vagrant ssh <BOXNAME>` | If you give your box a name in your Vagrantfile, you can ssh into it with boxname. Works from any directory.
-`vagrant destroy` | Stops and deletes all traces of the vagrant machine
-`vagrant destroy -f` | Same as above, without confirmation
+---
 
-## Provisioning VMs
-COMMAND | DESCRIPTION
----|---
-`vagrant provision` |  Forces reprovisioning of the vagrant machine
-`vagrant provision --debug ` | Use the debug flag to increase the verbosity of the output
-`vagrant up --provision | tee provision.log` | Runs `vagrant up`, forces provisioning and logs all output to a file
+# 🛡️ Vagrant Cheat-Sheet
 
-## Manage Boxes
-COMMAND | DESCRIPTION
----|---
-`vagrant box list` | See a list of all installed boxes on your computer
-`vagrant box add <BOXNAME> <BOXURL>` | Download a box image to your computer
-`vagrant box outdated` | Check for updates vagrant box update
-`vagrant box remove <BOXNAME>` | Deletes a box from the machine
-`vagrant package` | Packages a running virtualbox env in a reusable box
+Vagrant is an open-source tool for building and maintaining virtualized development environments. It provides a consistent workflow for managing virtual machines (VMs) across multiple platforms. Below is a cheat-sheet with essential Vagrant commands for general management, VM provisioning, and box management.
 
-## Vagrant with WSL2
+---
 
-Vagrant is able to run inside your Windows Subsystem for Linux environment. A tutorial on how to install
-and use it with your Windows installed Virtualbox can be found [here](https://thedatabaseme.de/2022/02/20/vagrant-up-running-vagrant-under-wsl2/).
+## 🔍 Overview
+
+- **Product Type**: Virtual Machine Management Tool
+    
+- **Focus**: Streamlining the process of creating and managing reproducible development environments.
+    
+
+---
+
+## 🧠 General Management
+
+|COMMAND|DESCRIPTION|
+|---|---|
+|`vagrant status`|Outputs the status of the current Vagrant machine|
+|`vagrant global-status`|Outputs the status of all Vagrant machines|
+|`vagrant global-status --prune`|Prunes invalid entries from the global status list|
+
+---
+
+## 🖥️ Managing VMs
+
+|COMMAND|DESCRIPTION|
+|---|---|
+|`vagrant init`|Initializes Vagrant with a Vagrantfile and `.vagrant` directory (requires specifying a base image in the Vagrantfile before running `vagrant up`)|
+|`vagrant up`|Starts the Vagrant environment (provisions only on the first `vagrant up`)|
+|`vagrant halt`|Stops the Vagrant machine|
+|`vagrant suspend`|Suspends the virtual machine, saving its state|
+|`vagrant resume`|Resumes a suspended machine (can also use `vagrant up` for this)|
+|`vagrant ssh`|Connects to the machine via SSH|
+|`vagrant ssh <BOXNAME>`|SSH into a specific box by name (useful if you have named the box in your `Vagrantfile`)|
+|`vagrant destroy`|Stops and deletes the Vagrant machine, removing all traces|
+|`vagrant destroy -f`|Same as above, but skips the confirmation prompt|
+
+---
+
+## ⚙️ Provisioning VMs
+
+|COMMAND|DESCRIPTION|
+|---|---|
+|`vagrant provision`|Forces reprovisioning of the Vagrant machine|
+|`vagrant provision --debug`|Enables debug mode for more detailed provisioning output|
+|`vagrant up --provision|tee provision.log`|
+
+---
+
+## 📦 Manage Boxes
+
+|COMMAND|DESCRIPTION|
+|---|---|
+|`vagrant box list`|Lists all installed Vagrant boxes on your computer|
+|`vagrant box add <BOXNAME> <BOXURL>`|Downloads and adds a box image to your machine|
+|`vagrant box outdated`|Checks for updates for the installed boxes|
+|`vagrant box remove <BOXNAME>`|Removes a specific box from the machine|
+|`vagrant package`|Packages a running VirtualBox environment into a reusable box|
+
+---
+
+## 🌐 Vagrant with WSL2
+
+Vagrant can also be run inside your **Windows Subsystem for Linux (WSL2)** environment. This allows you to leverage Vagrant's features directly within a Linux-like environment on Windows. For a tutorial on installing and using Vagrant with WSL2 and VirtualBox, check out this [guide](https://thedatabaseme.de/2022/02/20/vagrant-up-running-vagrant-under-wsl2/).
+
+For more advanced usage with **Vagrant and VirtualBox**, refer to the official [Vagrant Documentation](https://www.vagrantup.com/docs).
+
+---
+
+## 🔁 Related
+
+- [[Zero Trust Security]]
+    
+- [[Cloud Security Posture Management]]
+    
+- [[XDR]]
+    
+- [[Firewalls]]
+    
+- [[SASE]]
+    
+
+---
+
+## 🏷️ Tags
+
+#vagrant  
+#virtualization  
+#dev-environment  
+#vm-management  
+#wsl2  
+#vagrant-boxes  
+#provisioning
+
+---
+
+You can explore more Vagrant-related topics here:
+
+- **[Vagrant Basics](https://www.vagrantup.com/docs/getting-started)**: Learn the fundamentals of using Vagrant.
+    
+- **[Vagrant Boxes](https://www.vagrantup.com/docs/boxes)**: Detailed documentation on working with Vagrant Boxes.
+    
+- **[Vagrant Provisioning](https://www.vagrantup.com/docs/provisioning)**: A deeper dive into provisioning your VMs with Vagrant.
