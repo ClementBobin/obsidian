@@ -10,12 +10,14 @@ Incident management is essential in maintaining IT and business operations, ensu
 
 An incident is any event that disrupts normal service operations or has the potential to do so. It may include:
 
-- **Technical issues** (e.g., system outages, bugs)
-    
-- **Security breaches**
-    
-- **User-reported problems** (e.g., access issues)
-    
+> [!tip] **Examples of incidents**:
+> 
+> - **Technical issues** (e.g., system outages, bugs)
+>     
+> - **Security breaches**
+>     
+> - **User-reported problems** (e.g., access issues)
+>     
 
 ### 2. **Incident Management**
 
@@ -39,12 +41,14 @@ A structured approach to incident management ensures that incidents are handled 
 
 Incidents are discovered through:
 
-- Monitoring tools
-    
-- User reports
-    
-- Automated alerts
-    
+> [!tip] **Incident identification sources** include:
+> 
+> - Monitoring tools
+>     
+> - User reports
+>     
+> - Automated alerts
+>     
 
 ### 2. **Incident Logging**
 
@@ -65,10 +69,12 @@ Incidents are categorized by:
 
 Incidents are prioritized based on:
 
-- SLA commitments
-    
-- Impact on business operations
-    
+> [!tip] **Prioritization criteria** include:
+> 
+> - SLA commitments
+>     
+> - Impact on business operations
+>     
 
 ### 5. **Incident Diagnosis**
 

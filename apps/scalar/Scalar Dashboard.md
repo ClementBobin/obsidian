@@ -90,13 +90,19 @@ Scalar Dashboard offers several features to streamline API management and collab
 - Adjust project settings in the "Settings" tab.
     
 
-![[Pasted image 20250326182156.png]]![[Pasted image 20250326182206.png]]
-
 ---
 
 ## ⚖️ Security and Ethical Considerations
 
-When using Scalar Dashboard, ensure that access control and authentication processes are carefully managed to maintain privacy and secure project data. Follow relevant regulations and best practices for API security and team collaboration.
+> [!warning]  
+> When using Scalar Dashboard, ensure that access control and authentication processes are carefully managed to maintain privacy and secure project data. Follow relevant regulations and best practices for API security and team collaboration.
+
+- **Authentication**: Use strong authentication methods like OAuth to control access.
+    
+- **Authorization**: Define roles and permissions within your team.
+    
+- **Data Privacy**: Follow encryption and privacy guidelines when handling sensitive data.
+    
 
 ---
 
@@ -133,5 +139,3 @@ Scalar Dashboard is an **efficient tool** for managing API documentation, enhanc
 #github-integration  
 #openapi-support  
 #team-work
-
-![[Pasted image 20250326185102.png]] ![[Pasted image 20250326185156.png]]![[Pasted image 20250326185224.png]] ![[Pasted image 20250326185320.png]]![[Pasted image 20250326185338.png]] ![[Pasted image 20250326185400.png]]![[Pasted image 20250326185421.png]]![[Pasted image 20250326185449.png]]![[Pasted image 20250326185502.png]]

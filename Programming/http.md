@@ -75,7 +75,7 @@
 | 508  | Loop Detected                      | The server detected an infinite loop while processing the request.                                                                                                                                                                           |
 | 510  | Not Extended                       | Further extensions to the request are required for the server to fulfill it.                                                                                                                                                                 |
 | 511  | Network Authentication Required    | Indicates that the client needs to authenticate to gain network access.                                                                                                                                                                      |
-| 599  | Network Connect Timeout Error      | The connection timed out due to a overloaded server, a hardware error or a infrastructure error.                                                        |
+| 599  | Network Connect Timeout Error      | The connection timed out due to a overloaded server, a hardware error or a infrastructure error.                                                                                                                                             |
 HTTP status codes are used to indicate the outcome of a client's request to a server. They provide information about the result of the request and the current state of the server-client interaction. Here is a list of common HTTP status codes along with their descriptions: 
 ## Informational (1xx) 
 - **100 Continue:** The server has received the request headers and the client should proceed to send the request body.

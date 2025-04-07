@@ -8,6 +8,8 @@ Brainstorming is a creative problem-solving technique that encourages the genera
 
 Effective brainstorming sessions are built on the following principles:
 
+> [!tip] A successful brainstorming session starts with creating a positive and open-minded environment.
+
 1. **No Criticism**: All ideas are welcomed and accepted without judgment. Criticism or evaluation should be avoided to encourage free thinking.
     
 2. **Quantity Over Quality**: The goal is to generate as many ideas as possible, even if some seem impractical. More ideas often lead to unexpected breakthroughs.
@@ -25,6 +27,8 @@ Effective brainstorming sessions are built on the following principles:
 
 Brainstorming can take various forms depending on the setting and goals:
 
+> [!warning] Depending on the type of brainstorming, it may require specific tools or environments to be effective.
+
 - **Traditional Brainstorming**: In a group setting, participants verbally share their ideas while a facilitator writes them down for future reference.
     
 - **Mind Mapping**: Participants create visual diagrams representing ideas and their relationships, helping to explore concepts in a non-linear manner.
@@ -39,6 +43,8 @@ Brainstorming can take various forms depending on the setting and goals:
 ## 🌟 **Benefits of Brainstorming**
 
 Brainstorming offers several advantages for teams and individuals:
+
+> [!tip] The collaborative nature of brainstorming fosters stronger ideas and innovation than working alone.
 
 - **Creativity Enhancement**: It fosters creativity by encouraging exploration from various perspectives and encouraging novel ideas.
     
@@ -73,6 +79,8 @@ Brainstorming offers several advantages for teams and individuals:
 ---
 
 ## 🔑 **Conclusion**
+
+> [!tip] Great brainstorming sessions can result in breakthrough ideas that may otherwise remain unexplored.
 
 Brainstorming is a versatile and effective technique for generating ideas, solving problems, and fostering innovation. By adhering to core principles and utilizing different methods, individuals and teams can unlock their creative potential and discover innovative solutions to a wide variety of challenges. Whether used in business, education, or any other domain, brainstorming can help spark creativity and lead to breakthroughs.
 

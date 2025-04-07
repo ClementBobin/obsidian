@@ -1,8 +1,18 @@
-## Overview
+# ⚡ PM2
 
-PM2 is a powerful process manager for Node.js applications that helps manage and monitor processes in production environments. It ensures that applications remain alive, can restart automatically if they crash, and provides insightful metrics on performance.
+> [!info]  
+> **PM2** is a powerful process manager for Node.js applications that helps manage and monitor processes in production environments. It ensures that applications remain alive, can restart automatically if they crash, and provides insightful metrics on performance.
 
-## Why Use PM2?
+🌐 **Project Homepage**: [PM2 Homepage](https://pm2.keymetrics.io/)
+
+---
+
+## 🔍 Overview
+
+> [!info]  
+> **PM2** is a Node.js process manager designed to keep applications running smoothly, even in high-demand environments. It provides several features such as automatic restarts, clustering, monitoring, and more.
+
+### Why Use PM2?
 
 - **Automatic Restarts**: Keeps your applications running by automatically restarting crashed processes.
     
@@ -19,7 +29,27 @@ PM2 is a powerful process manager for Node.js applications that helps manage and
 
 ---
 
-## Installation
+## 🛠️ Features
+
+> [!tip]  
+> PM2 offers an array of powerful features for Node.js applications:
+
+- 🔄 **Automatic Restart**: Keeps apps alive by auto-restarting them on crashes.
+    
+- 🖥️ **Clustering**: Distributes traffic across multiple app instances.
+    
+- 📊 **Real-time Monitoring**: Dashboard for tracking application performance.
+    
+- 🔐 **Zero-Downtime Deployments**: Allows deployment without interrupting the service.
+    
+- ⚙️ **Custom Configuration**: Define apps with an ecosystem file.
+    
+
+---
+
+## 🏃 Getting Started
+
+### 🧑‍💻 Install PM2
 
 To install PM2 globally, run:
 
@@ -35,12 +65,12 @@ npm list -g pm2
 
 ---
 
-## Basic Usage
+## 🔧 Basic Usage
 
 ### Start an Application
 
 ```sh
-pm start pm2 start app.js
+pm2 start app.js
 ```
 
 This starts the `app.js` file as a PM2-managed process.
@@ -48,7 +78,7 @@ This starts the `app.js` file as a PM2-managed process.
 ### List Running Processes
 
 ```sh
-pm start pm2 list
+pm2 list
 ```
 
 Shows a table with information about all managed processes.
@@ -56,7 +86,7 @@ Shows a table with information about all managed processes.
 ### Restart a Process
 
 ```sh
-pm start pm2 restart app
+pm2 restart app
 ```
 
 Restarts the process named `app`.
@@ -64,160 +94,94 @@ Restarts the process named `app`.
 ### Stop and Delete a Process
 
 ```sh
-pm start pm2 stop app
-pm start pm2 delete app
+pm2 stop app
+pm2 delete app
 ```
 
 Stops and removes the process from PM2.
 
 ### Auto Restart on System Boot
 
-To ensure PM2 restarts applications when the system reboots, run:
+> [!tip]  
+> To ensure PM2 restarts applications when the system reboots, run:
 
 ```sh
-pm start pm2 startup
+pm2 startup
 ```
 
 Then follow the instructions to enable the startup script.
 
-### Logging
+### Logs
 
-To view application logs in real-time:
+To view logs in real-time:
 
 ```sh
-pm start pm2 logs
+pm2 logs
 ```
 
 To filter logs for a specific process:
 
 ```sh
-pm start pm2 logs app
-```
-
-To flush logs and clear all stored log data:
-
-```sh
-pm start pm2 flush
+pm2 logs app
 ```
 
 ### Process Scaling
 
-To start multiple instances of an application using all available CPU cores:
+To start multiple instances of an application:
 
 ```sh
-pm start pm2 start app.js -i max
+pm2 start app.js -i max
 ```
 
-Or specify the number of instances:
+To specify the number of instances:
 
 ```sh
-pm start pm2 start app.js -i 4
+pm2 start app.js -i 4
 ```
 
 ### Monitoring
 
-For a real-time dashboard:
+For real-time monitoring:
 
 ```sh
-pm start pm2 monit
-```
-
-This provides CPU, memory, and process status updates.
-
-### Save and Restore Process List
-
-To save the current list of processes:
-
-```sh
-pm start pm2 save
-```
-
-To restore processes after a system reboot:
-
-```sh
-pm start pm2 resurrect
+pm2 monit
 ```
 
 ---
 
-## Advanced Features
+## 🔄 Related
 
-### Deployments
-
-PM2 supports zero-downtime deployments using the following command:
-
-```sh
-npm start pm2 reload app
-```
-
-### Ecosystem Configuration
-
-PM2 allows defining multiple applications using an `ecosystem.config.js` file. Example:
-
-```js
-module.exports = {
-  apps: [
-    {
-      name: "my-app",
-      script: "app.js",
-      instances: "max",
-      exec_mode: "cluster",
-      env: {
-        NODE_ENV: "production"
-      }
-    }
-  ]
-};
-```
-
-To start applications using this configuration:
-
-```sh
-pm start pm2 start ecosystem.config.js
-```
-
-### Deployment Workflow
-
-PM2 provides an integrated deployment system. First, define deployment settings in `ecosystem.config.js`:
-
-```js
-module.exports = {
-  apps: [
-    {
-      name: "my-app",
-      script: "app.js",
-      instances: "max",
-      exec_mode: "cluster",
-      env: {
-        NODE_ENV: "production"
-      }
-    }
-  ],
-  deploy: {
-    production: {
-      user: "node",
-      host: "myserver.com",
-      ref: "origin/main",
-      repo: "git@github.com:username/repo.git",
-      path: "/var/www/my-app",
-      "post-deploy": "npm install && pm2 restart ecosystem.config.js --env production"
-    }
-  }
-};
-```
-
-To deploy the application:
-
-```sh
-pm start pm2 deploy production setup
-pm start pm2 deploy production
-```
+- **[[Node.js]]** — Platform for building scalable network applications, like PM2.
+    
+- **[[Docker]]** — Containerization platform used with PM2 for scalable deployments.
+    
+- **[[Nginx]]** — Web server and reverse proxy that can work alongside PM2 for load balancing.
+    
 
 ---
 
-## Conclusion
+## 🌍 Explore More
 
-PM2 is a robust and feature-rich process manager that simplifies managing Node.js applications in production. It offers automatic restarts, monitoring, load balancing, and advanced deployment strategies. By integrating PM2 into your workflow, you can enhance the stability and performance of your applications efficiently.
+- 🌐 [PM2 Documentation](https://pm2.keymetrics.io/docs/usage/quick-start/)
+    
+- 🌐 [PM2 GitHub Repository](https://github.com/Unitech/pm2)
+    
 
-## Documentation: 
-[pm2](https://pm2.keymetrics.io/docs/usage/quick-start/)
+---
+
+## 📚 Tags
+
+- #PM2
+    
+- #NodeJS
+    
+- #ProcessManager
+    
+- #Clustering
+    
+- #Monitoring
+    
+- #Deployment
+    
+- #Scalability
+    

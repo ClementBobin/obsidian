@@ -66,9 +66,9 @@ Scalar API Client offers a variety of features to streamline your API developmen
 
 ### 🌐 CORS Proxy
 
-- Bypass browser CORS restrictions with Scalar's public proxy. ![[Pasted image 20250326094201.png]]
+- Bypass browser CORS restrictions with Scalar's public proxy.
     
-    - [Check the source code on GitHub](https://github.com/Scalar-API/CORS-Proxy).
+    - [Check the source code on GitHub](https://github.com/Scalar-API/CORS-Proxy). ![[Pasted image 20250326094201.png]]
         
 
 ---
@@ -94,7 +94,7 @@ Download Scalar API Client for your platform:
     
 2. **Manage environments** – Define variables for multiple servers.
     
-3. **Enable watch mode** – Auto-refresh on API changes by adding url off [openapi.json](Scalar%20Integration).
+3. **Enable watch mode** – Auto-refresh on API changes by adding URL off [openapi.json](https://chatgpt.com/c/Scalar%20Integration).
     
 4. **Use OpenAPI Integration** – Import/export API specs.
     
@@ -119,7 +119,8 @@ Download Scalar API Client for your platform:
 
 ## 🌍 Explore More
 
-- **[API Frameworks & Integrations](Scalar%20Integration)** — Explore upcoming integrations and framework support.
+- **[API Frameworks & Integrations](https://chatgpt.com/c/Scalar%20Integration)** — Explore upcoming integrations and framework support.
+    
 
 ---
 

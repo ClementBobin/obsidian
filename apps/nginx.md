@@ -1,91 +1,183 @@
-# Nginx
-Open source web and application server.
+# 🧭 Nginx
 
-Project Homepage: [Nginx Homepage](https://www.nginx.com/)
-Documentation: [Nginx Unit Docs](https://unit.nginx.org/)
+> [!info] **Nginx** is a high-performance open-source web server, reverse proxy, and application server.  
+> It's widely used for serving static content, load balancing, SSL termination, and acting as a gateway to application services.
+
+🌐 **Project Homepage**: [Nginx Homepage](https://www.nginx.com/)  
+📚 **Documentation**: [Nginx Unit Docs](https://unit.nginx.org/)
 
 ---
-## Basic configuration arguments and examples
 
-Logging and debugging:
+## 🔍 Overview
+
+- **Type**: Web Server / Reverse Proxy / Application Gateway
+    
+- **Purpose**: Serve static content, reverse proxy dynamic apps, terminate SSL, balance load
+    
+- **Key Capabilities**:
+    
+    - HTTP/2 and experimental HTTP/3 support
+        
+    - Custom logging, access control
+        
+    - Powerful location-based routing
+        
+    - SSL certificate management
+        
+
+---
+
+## 🛠️ Features
+
+- 🌐 HTTP/HTTPS server with static file hosting
+    
+- 🔀 Reverse proxy and load balancing
+    
+- 📜 Flexible configuration using `nginx.conf`
+    
+- 🔒 SSL termination and security headers
+    
+- 🧩 Modular architecture for custom extensions
+    
+- 🛠️ FastCGI, SCGI, uWSGI, and gRPC support
+    
+
+---
+
+## 🏃 Getting Started
+
+### 🧾 Basic Configuration
 
 ```nginx
-error_log <file> <loglevel>
-    error_log logs/error.log;
-    error_log logs/debug.log debug;
-    error_log logs/error.log notice;
+error_log logs/error.log;
+error_log logs/debug.log debug;
 ```
 
-basic listening ports:
-
 ```nginx
-listen <port> <options>
-        listen 80;
-        listen 443 ssl http2;
-        listen 443 http3 reuseport; (this is experimental!)
+listen 80;
+listen 443 ssl http2;
+listen 443 http3 reuseport; # experimental
 ```
 
-header modifcations:
 ```nginx
-add_header <header> <values>
-        add_header Alt-svc '$http3=":<port>"; ma=<value>'; (this is experimental!)
+server_name domain1.com *.domain1.com;
 
-ssl_certificate / ssl_certificate_key
-        ssl_certificate cert.pem;
-        ssl_certificate_key cert.key;
+root /var/www/html/domain1;
+index index.php;
+```
 
-server_name <domains>
-    server_name domain1.com *.domain1.com
+> [!tip] SSL Config  
+> Nginx supports SSL out of the box — make sure to provide valid certificate and key files.
 
-root <folder>
-    root /var/www/html/domain1;
+```nginx
+ssl_certificate cert.pem;
+ssl_certificate_key cert.key;
+```
 
-index <file>
-    index index.php;
+---
 
-location <url> {
+## 🔧 Customization and Configuration
+
+### 🧠 Header Manipulation
+
+```nginx
+add_header Alt-svc '$http3=":443"; ma=86400'; # experimental
+```
+
+### 📂 Location Blocks
+
+```nginx
+location / {
+    root /var/www/html;
+    index index.html index.htm;
 }
-    location / {
-        root index.html;
-        index index.html index.htm;
-    }
-    location / {
-        try_files $uri $uri/ /index.php$is_args$args;
-    }
-    location ~ \\.php$ {
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_index index.php;
-        fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-        include fastcgi_params;
-    }
-    location ~ /\\.ht {
-        deny all;
-    }
-    location = /favicon.ico {
-        log_not_found off;
-        access_log off;
-    }
-    location = /robots.txt {
-        log_not_found off;
-        access_log off;
-        allow all;
-    }
-    location ~* .(css|gif|ico|jpeg|jpg|js|png)$ {
-        expires max;
-        log_not_found off;
+```
+
+```nginx
+location / {
+    try_files $uri $uri/ /index.php$is_args$args;
 }
 ```
-## Reverse Proxy
-### Show Client's real IP
+
+```nginx
+location ~ \.php$ {
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME /scripts$fastcgi_script_name;
+    include fastcgi_params;
+}
+```
+
+> [!warning] Always secure sensitive paths like `.ht` or backup files.
+
+```nginx
+location ~ /\.ht {
+    deny all;
+}
+```
+
+---
+
+## 🔁 Reverse Proxy
+
+### 🔍 Show Client’s Real IP
+
 ```nginx
 server {
-	server_name example.com;
-	location / { 
-		proxy_pass http://localhost:4000;
-		
-		# Show clients real IP behind a proxy
-		proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	}
+    server_name example.com;
+
+    location / {
+        proxy_pass http://localhost:4000;
+
+        # Preserve client IP info
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
 }
 ```
+
+> [!tip]  
+> Use `proxy_set_header` for proper header forwarding when using Nginx as a reverse proxy behind load balancers or CDNs.
+
+---
+
+## 🔄 Related
+
+- **[[Let's Encrypt]]** — Free SSL certificate provider
+    
+- **[[Docker]]** — Frequently used with Nginx for containerized deployments
+    
+- **[Nginx Config Examples](https://www.digitalocean.com/community/tools/nginx)** — Handy tool to generate configs
+    
+
+---
+
+## 🌍 Explore More
+
+- 🌐 [Nginx Beginner’s Guide](https://nginx.org/en/docs/beginners_guide.html)
+    
+- 🌐 [Nginx Configuration Guide](https://nginx.org/en/docs/)
+    
+- 🌐 [Nginx GitHub](https://github.com/nginx/nginx)
+    
+
+---
+
+## 📚 Tags
+
+- #Nginx
+    
+- #WebServer
+    
+- #ReverseProxy
+    
+- #LoadBalancing
+    
+- #SSL
+    
+- #HTTP3
+    
+- #FastCGI
+    
+- #DevOps
+    
