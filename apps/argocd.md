@@ -65,7 +65,7 @@ Argo CD offers a range of features designed to enhance the continuous delivery e
 
 ## 🚨 Installation
 
-### 1. **Install Argo CD on a [[Kubernetes]] Cluster using [[kubectl]]**
+### 1. **Install Argo CD on a [[Kubernetes]] Cluster using [[Kubectl]]**
 
 ```bash
 kubectl create namespace argocd

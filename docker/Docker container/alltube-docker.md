@@ -1,33 +1,51 @@
-## Quick Start
+# 🎬 AllTube Quick Start
 
-[AllTube Download](https://github.com/Rudloff/alltube) is a Web GUI for [youtube-dl](https://github.com/ytdl-org/youtube-dl), you can use it to download videos from a lot of websites online, even if they don't want you to do this.
+[AllTube](https://github.com/Rudloff/alltube) is a Web GUI for [youtube-dl](https://github.com/ytdl-org/youtube-dl), which allows you to download videos from various websites—even those that don't explicitly allow video downloads.
 
-_AllTube_ provide an [official site](http://alltubedownload.net/) to use _youtube-dl_ online, or you can create one under your own domain. Unfortunately, the deployment of _AllTube_ is a bit cumbersome, and a good docker can make your deployment faster.
+AllTube provides an [official site](http://alltubedownload.net/) for using _youtube-dl_ online or you can deploy your own instance under your domain.
 
-First of all, you must have a docker environment, if not you should [install docker](https://docs.docker.com/engine/install/) first. After completion, use the following command to start _AllTube_.
+> [!note] The deployment of AllTube can be a bit cumbersome, but using Docker simplifies the process significantly. Let's walk through setting it up!
+
+---
+
+## ⚙️ Prerequisites
+
+Before getting started, ensure you have a **Docker environment**. If you don’t, follow the official Docker installation guide [here](https://docs.docker.com/engine/install/).
+
+---
+
+## 🚀 Quick Start with Docker
+
+To deploy AllTube using Docker, run the following command:
 
 ```shell
 docker run -d --restart always --name alltube -p 24488:80 dnomd343/alltube
 ```
 
-After the command is run, _Alltube_ will work on `tcp/24488`, of course, this port can be arbitrary. We can also specify the working options of _Alltube_ through environment variables, the following are built-in options.
+This command will start AllTube on port `24488`. You can change this port to your preferred one.
 
-- `TITLE=...` ：Specify the website title.
+> [!tip] You can customize AllTube’s behavior by passing environment variables. Below are a few built-in options you can use:
+
+### Available Environment Variables
+
+- `TITLE=...` : Set the title of your website.
     
-- `REMUX=ON` ：Merge best audio and best video.
+- `REMUX=ON` : Merge best audio and video.
     
-- `STREAM=ON` ：Allow stream videos through server.
+- `STREAM=ON` : Allow video streaming.
     
-- `CONVERT=ON` ：Enabled audio conversion.
+- `CONVERT=ON` : Enable audio conversion.
     
-- `PORT=...` ：Specify the service port, default in `80`
+- `PORT=...` : Specify a custom port (default: `80`).
     
 
-Here is an example:
+---
+
+### Example Command with Custom Configuration
 
 ```shell
 docker run -d --restart always --name alltube \
-  --env TITLE="My Alltube Site" \
+  --env TITLE="My AllTube Site" \
   --env CONVERT=ON \
   --env STREAM=ON \
   --env REMUX=ON \
@@ -35,7 +53,11 @@ docker run -d --restart always --name alltube \
   --network host dnomd343/alltube
 ```
 
-Next, configure your web server reverse proxy to `localhost:24488`, let's take _Nginx_ as an example here.
+---
+
+## 🖥️ Configure Reverse Proxy (e.g., Nginx)
+
+To access AllTube through your domain, configure a reverse proxy with Nginx:
 
 ```nginx
 server {
@@ -59,24 +81,48 @@ server {
 }
 ```
 
-Finally, use the `nginx -s reload` command to take effect, visit your domain name and enjoy it!
+> [!warning] After making these changes, don't forget to reload Nginx with the command: `nginx -s reload`
 
-## Advanced
+Now, you can visit your domain and enjoy AllTube!
 
-If necessary, you can use the following command to build the image yourself.
+---
+
+## 🔧 Advanced Setup
+
+If you'd like to build the AllTube Docker image yourself, use the following command:
 
 ```shell
 docker build -t alltube https://github.com/dnomd343/alltube-docker.git
 ```
 
-Due to the stagnation of the [youtube-dl](https://github.com/ytdl-org/youtube-dl) update, currently we use the [yt-dlp](https://github.com/yt-dlp/yt-dlp) project, you can manually change `YTDLP` in the Dockerfile to specify the latest version.
+> [!note] By default, AllTube uses the **yt-dlp** project (a more updated fork of youtube-dl) instead of youtube-dl. You can manually change `YTDLP` in the Dockerfile to specify the version you want.
 
-If you don't need the conversion function, you can remove the installation of `ffmpeg`, which will reduce the image size to a certain extent.
+---
 
-In addition, the project supports multi-stage builds, using the `buildx` command will speed up the build process. Below is an example of using `buildx` to build multi-architecture images.
+## 🧰 Customization
+
+If you don’t need the audio conversion feature, you can exclude `ffmpeg` during the build process to reduce the image size.
+
+### Build Multi-Architecture Images
+
+To speed up the build process, use Docker's multi-stage builds. Here’s an example using `buildx` to build images for multiple architectures:
 
 ```shell
 docker buildx build -t dnomd343/alltube \
   --platform="linux/amd64,linux/386,linux/arm64,linux/arm/v7" \
   https://github.com/dnomd343/alltube-docker.git --push
 ```
+
+This will create and push images for multiple platforms.
+
+---
+
+## 📝 Conclusion
+
+AllTube makes it easy to deploy a video download site based on youtube-dl. With Docker and some basic configurations, you can quickly get started and enjoy the flexibility to customize and scale your deployment.
+
+---
+
+## Tags 📚
+
+#alltube #docker #yt-dlp #videos #web

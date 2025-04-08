@@ -1,26 +1,28 @@
-# Kubectl
+# 🛠️ Kubectl Cheat-Sheet
 
-Kubectl is a command line tool for communicating with a [Kubernetes Cluster](kubernetes.md)'s control pane, using the Kubernetes API.
+Kubectl is the command line tool to interact with a [Kubernetes Cluster](https://chatgpt.com/c/kubernetes.md)'s control plane using the Kubernetes API.
 
-Documentation: [Kubectl Reference](https://kubernetes.io/docs/reference/kubectl/)
+- **Official Documentation:** [Kubectl Reference](https://kubernetes.io/docs/reference/kubectl/)
+    
 
 ---
-## Installation
 
-### On Windows (PowerShell)
+## ⚙️ Installation
 
-Install Kubectl with [chocolatey](tools/chocolatey.md):
+### 📦 On Windows (PowerShell)
 
-```
+Install `kubectl` using [chocolatey](https://chatgpt.com/c/tools/chocolatey.md):
+
+```bash
 choco install kubernetes-cli
 ```
 
-### On Linux
+### 📥 On Linux
 
-> [!INFO] Installing on WSL2
-> On WSL2 it's recommended to install Docker Desktop [docker-desktop](https://www.docker.com/products/docker-desktop/), which automatically comes with kubectl.
+> [!INFO] **Installing on WSL2**  
+> On WSL2, it's recommended to install Docker Desktop [docker-desktop](https://www.docker.com/products/docker-desktop/), which includes kubectl.
 
-#### Download the latest release
+#### Download the Latest Release
 
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"  
@@ -32,34 +34,33 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
 
-### On mac OS
+### 🍏 On macOS
 
-Install Kubectl with [homebrew](tools/homebrew.md):
+Install `kubectl` using [homebrew](https://chatgpt.com/c/tools/homebrew.md):
 
 ```zsh
 brew install kubernetes-cli
 ```
 
 ---
-## Config Management
 
-### Multiple Config Files
+## ⚙️ Config Management
 
-### On Windows (PowerShell)
+### 📂 Multiple Config Files
+
+#### On Windows (PowerShell)
 
 ```powershell
 $env:KUBECONFIG = "$HOME/.kube/prod-k8s-clcreative-kubeconfig.yaml;$HOME/.kube/infra-home-kube-prod-1.yml;$HOME/.kube/infra-home-kube-demo-1.yml;$HOME/.kube/infra-cloud-kube-prod-1.yml"
 ```
 
-### On Linux
+#### On Linux
 
 ```bash
 export KUBECONFIG=~/.kube/kube-config-1.yml:~/.kube/kube-config-2.yml
 ```
 
-Managing multiple config files manually can become extensive. Below you can find a handy script, which you can implement in your shell rc file (e.g. .bashrc or .zshrc). The script will automatically add all found kubeconfigs to the `KUBECONFIG` environment variable.
-
-Script was copied from [here](https://medium.com/@alexgued3s/multiple-kubeconfigs-no-problem-f6be646fc07d)
+You can automate adding multiple kubeconfigs to the `KUBECONFIG` environment variable with the following script. Add it to your shell rc file (e.g., `.bashrc` or `.zshrc`):
 
 ```bash
 # If there's already a kubeconfig file in ~/.kube/config it will import that too and all the contexts
@@ -67,9 +68,13 @@ DEFAULT_KUBECONFIG_FILE="$HOME/.kube/config"
 if test -f "${DEFAULT_KUBECONFIG_FILE}"
 then
   export KUBECONFIG="$DEFAULT_KUBECONFIG_FILE"
-fi# Your additional kubeconfig files should be inside ~/.kube/config-files
+fi
+
+# Your additional kubeconfig files should be inside ~/.kube/config-files
 ADD_KUBECONFIG_FILES="$HOME/.kube/config-files"
-mkdir -p "${ADD_KUBECONFIG_FILES}"OIFS="$IFS"
+mkdir -p "${ADD_KUBECONFIG_FILES}"
+
+OIFS="$IFS"
 IFS=$'\n'
 for kubeconfigFile in `find "${ADD_KUBECONFIG_FILES}" -type f -name "*.yml" -o -name "*.yaml"`
 do
@@ -78,102 +83,124 @@ done
 IFS="$OIFS"
 ```
 
-Another helpful tool that makes you changing and selecting the cluster context easier is
-`kubectx`. You can download `kubectx` [here](https://github.com/ahmetb/kubectx).
-
-:warning: The above script conflicts with kubectx, cause kubectx can only work with one
-kubeconfig file listed in the `KUBECONFIG` env var. If you want to use both, add the following
-lines to your rc file.
+⚠️ **Warning:** The above script conflicts with `kubectx`. If you want to use both, you should merge the configs:
 
 ```bash
-# now we merge all configs to one
 kubectl config view --merge --flatten > $HOME/.kube/merged-config
 export KUBECONFIG="$HOME/.kube/merged-config"
 ```
 
 ---
-## Commands
 
-### Networking
+## ⚡ Commands
 
-Connect containers using Kubernetes internal DNS system:
-`<service-name>.<namespace>.svc.cluster.local`
+### 🌐 Networking
 
-Troubleshoot Networking with a netshoot toolkit Container:
-`kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash`
+- **Connect Containers via Kubernetes DNS**  
+    `<service-name>.<namespace>.svc.cluster.local`
+    
+- **Troubleshoot Networking**  
+    Use the netshoot toolkit container:
+    
+    ```bash
+    kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+    ```
+    
 
-### Containers
+### 🛠️ Containers
 
-Restart Deployments (Stops and Restarts all Pods):
-`kubectl scale deploy <deployment> --replicas=0`
-`kubectl scale deploy <deployment> --replicas=1`
+- **Restart Deployments** (Stops and restarts all Pods):
+    
+    ```bash
+    kubectl scale deploy <deployment> --replicas=0
+    kubectl scale deploy <deployment> --replicas=1
+    ```
+    
+- **Execute Commands on Pods**:
+    
+    ```bash
+    kubectl exec -it <PODNAME> -- <COMMAND>
+    kubectl exec -it generic-pod -- /bin/bash
+    ```
+    
 
-Executing Commands on Pods:
-`kubectl exec -it <PODNAME> -- <COMMAND>`
-`kubectl exec -it generic-pod -- /bin/bash` 
+### 🛠️ Config and Cluster Management
 
-### Config and Cluster Management
-COMMAND | DESCRIPTION
----|---
-`kubectl cluster-info` | Display endpoint information about the master and services in the cluster
-`kubectl config view` |Get the configuration of the cluster
-### Resource Management
-COMMAND | DESCRIPTION
----|---
-`kubectl get all --all-namespaces` | List all resources in the entire Cluster
-`kubectl delete <RESOURCE> <RESOURCENAME> --grace-period=0 --force` | Try to force the deletion of the resource
+|Command|Description|
+|---|---|
+|`kubectl cluster-info`|Display endpoint information about the master and services.|
+|`kubectl config view`|Get the configuration of the cluster.|
 
----
-## List of Kubernetes Resources "Short Names"
+### 📦 Resource Management
 
-Short Name | Long Name
----|---
-`csr`|`certificatesigningrequests`
-`cs`|`componentstatuses`
-`cm`|`configmaps`
-`ds`|`daemonsets`
-`deploy`|`deployments`
-`ep`|`endpoints`
-`ev`|`events`
-`hpa`|`horizontalpodautoscalers`
-`ing`|`ingresses`
-`limits`|`limitranges`
-`ns`|`namespaces`
-`no`|`nodes`
-`pvc`|`persistentvolumeclaims`
-`pv`|`persistentvolumes`
-`po`|`pods`
-`pdb`|`poddisruptionbudgets`
-`psp`|`podsecuritypolicies`
-`rs`|`replicasets`
-`rc`|`replicationcontrollers`
-`quota`|`resourcequotas`
-`sa`|`serviceaccounts`
-`svc`|`services`
+|Command|Description|
+|---|---|
+|`kubectl get all --all-namespaces`|List all resources in the entire cluster.|
+|`kubectl delete <RESOURCE> <RESOURCENAME> --grace-period=0 --force`|Force the deletion of the resource.|
 
 ---
-## 陼 Logs and Troubleshooting
-...
 
-### Logs
-...
+## 🔢 Kubernetes Resource Short Names
 
-### MySQL 
-`kubectl run -it --rm --image=mysql:5.7 --restart=Never mysql-client -- mysql -u USERNAME -h HOSTNAME -p`
-
-### Networking
-`kubectl run -it --rm --image=nicolaka/netshoot netshoot -- /bin/bash`
+|Short Name|Long Name|
+|---|---|
+|`csr`|`certificatesigningrequests`|
+|`cs`|`componentstatuses`|
+|`cm`|`configmaps`|
+|`ds`|`daemonsets`|
+|`deploy`|`deployments`|
+|`ep`|`endpoints`|
+|`ev`|`events`|
+|`hpa`|`horizontalpodautoscalers`|
+|`ing`|`ingresses`|
+|`limits`|`limitranges`|
+|`ns`|`namespaces`|
+|`no`|`nodes`|
+|`pvc`|`persistentvolumeclaims`|
+|`pv`|`persistentvolumes`|
+|`po`|`pods`|
+|`pdb`|`poddisruptionbudgets`|
+|`psp`|`podsecuritypolicies`|
+|`rs`|`replicasets`|
+|`rc`|`replicationcontrollers`|
+|`quota`|`resourcequotas`|
+|`sa`|`serviceaccounts`|
+|`svc`|`services`|
 
 ---
-## Resources stuck in Terminating state
-...
 
-```sh
+## 🧰 Logs and Troubleshooting
+
+### 🔍 Logs
+
+- **Access MySQL Client Logs:**
+    
+    ```bash
+    kubectl run -it --rm --image=mysql:5.7 --restart=Never mysql-client -- mysql -u USERNAME -h HOSTNAME -p
+    ```
+    
+- **Troubleshoot Networking with Netshoot**:
+    
+    ```bash
+    kubectl run -it --rm --image=nicolaka/netshoot netshoot -- /bin/bash
+    ```
+    
+
+### 🚨 Resources Stuck in Terminating State
+
+You can resolve stuck resources using the following method:
+
+```bash
 (
 NAMESPACE=longhorn-demo-1
 kubectl proxy &
-kubectl get namespace $NAMESPACE -o json |jq '.spec = {"finalizers":[]}' >temp.json
+kubectl get namespace $NAMESPACE -o json | jq '.spec = {"finalizers":[]}' > temp.json
 curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize
 )
 ```
 
+---
+
+## Tags 📚
+
+#kubectl #kubernetes #cli #cluster-management #resource-management

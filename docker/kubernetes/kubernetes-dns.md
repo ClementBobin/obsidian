@@ -1,36 +1,43 @@
-# Kubernetes DNS
+Here’s your **Kubernetes DNS Cheat-Sheet** formatted for Obsidian:
 
-## DNS for Services and Pods
+---
 
-Kubernetes creates DNS records for Services and Pods. You can contact Services with consistent DNS names instead of IP addresses.
+# 🌐 Kubernetes DNS
+
+## 🏷️ DNS for Services and Pods
+
+Kubernetes automatically creates DNS records for Services and Pods, enabling you to access them with consistent DNS names instead of using IP addresses.
+
+### Service DNS Format:
 
 ```
 your-service.your-namespace.svc.cluster.local
 ```
 
-Any Pods exposed by a Service have the following DNS resolution available:
+### Pod DNS Format (Exposed via a Service):
 
 ```
 your-prod.your-service.your-namespace.svc.cluster.local
 ```
 
 ---
-## Custom DNS Settings
 
-### Edit coredns config map
+## 🛠️ Custom DNS Settings
 
-Add entry to the `Corefile: |` section of the `configmap/coredns` in section **kube-system**.
+### 📝 Edit CoreDNS ConfigMap
+
+To customize DNS settings, you can edit the `Corefile` section in the `configmap/coredns` in the `kube-system` namespace.
 
 ```yml
 .:53 {
-  # ...
+  # Existing config...
 }
 import /etc/coredns/custom/*.server
 ```
 
-### Add new config map
+### ➕ Add a New ConfigMap
 
-Example for local DNS server using the **clcreative.home** zone.
+To use a custom DNS server (e.g., `clcreative.home`), create a ConfigMap with the following example:
 
 ```yml
 apiVersion: v1
@@ -44,3 +51,13 @@ data:
       forward . 10.20.0.10
     }
 ```
+
+---
+
+## Tags 📚
+
+`#kubernetes` `#dns` `#coredns` `#services` `#pods`
+
+---
+
+This cheat-sheet provides a quick reference for Kubernetes DNS management and custom configurations. Let me know if you need further clarification!
