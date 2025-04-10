@@ -119,7 +119,7 @@ Le projet consiste en la **migration d'une application desktop WPF vers Flutter*
 
 ## 📦 Éléments produits
 
-- 🧩 Code source : Front Flutter + Backend API C#
+- 🧩 Code source :[ Front Flutter](https://dev.azure.com/SIO2025ClementBobin/Other/_git/FlutterManagement) + [Backend API C#](https://dev.azure.com/SIO2025ClementBobin/Other/_git/ApiManagentDevis)
     
 - 📊 Captures d’écran : Filtres dynamiques, interface de facturation, saisie horaire
     

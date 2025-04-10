@@ -102,9 +102,9 @@ Ce projet a pour objectif de **concevoir une infrastructure centralisée de coll
 
 ## 📦 Éléments produits
 
-- 🔧 **API Backend** (v1 en C#, v2 en Node.js avec Express, Prisma, Zod)
+- 🔧 **[API Backend](https://dev.azure.com/SIO2025ClementBobin/Other/_git/Api%20IOT%20Express)** (v1 en C#, v2 en Node.js avec Express, Prisma, Zod)
     
-- 🌐 **Application web** de visualisation des données capteurs
+- 🌐 **[Application web](https://github.com/ClementBobin/iot_vision)** de visualisation des données capteurs
     
 - 📃 **Documentation de l’API** générée dynamiquement
     
