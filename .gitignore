@@ -1,11 +1,14 @@
-SIO Saint-benigne.md
-workspace.json
-*.json
-*.json
-.obsidian/workspace.json
-.obsidian/appearance.json
-.obsidian/workspace.json
+.DS_Store
+.gitignore
+node_modules
+public
+prof
+tsconfig.tsbuildinfo
+.quartz-cache
+private/
+.replit
+replit.nix
 
-
-# Ignore Smart Connections folder because embeddings file is large and updated frequently
-.smart-connections
+content/.obsidian/workspace.json
+content/.obsidian/appearance.json
+content/.obsidian/workspace.json
