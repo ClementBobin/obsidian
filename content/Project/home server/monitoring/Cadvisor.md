@@ -1,0 +1,2 @@
+[install](https://github.com/google/cadvisor)
+[install via netdata](https://app.netdata.cloud/spaces/clementbobin21-space/rooms/all-nodes/integrate-anything#metrics_correlation=false&after=-900&before=0&utc=Europe%2FParis&offset=%2B1&timezoneName=Brussels%2C%20Copenhagen%2C%20Madrid%2C%20Paris&modal=&modalTab=&modalParams=&selectedIntegrationCategory=data-collection.containers-and-vms&force_play=false&selectedIntegrationTab=3&selectedIntegration=go.d.plugin-prometheus-cAdvisor)

@@ -1,0 +1,1 @@
+[install docs](https://github.com/FreshRSS/FreshRSS)

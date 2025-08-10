@@ -1,1 +1,0 @@
-![](asset/pdf/03-Le-filtrage.pdf)

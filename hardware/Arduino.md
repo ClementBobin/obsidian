@@ -1,1 +1,0 @@
-![](asset/pdf/Synthese-Arduino-1.pdf)

@@ -1,0 +1,1 @@
+[install](https://radarr.video/#downloads-docker)
