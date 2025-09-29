@@ -3,7 +3,7 @@
 ## 📖 Overview
 
 The `next.config.js` (or `next.config.mjs` if using ESM) file is the **central configuration** for a Next.js project.  
-It allows you to customize the **build process**, **optimizations**, and **runtime behaviors** of your app.
+It allows you to customize the **build process**, **optimizations**, **runtime behaviors**, and now **security headers** of your app.
 
 ---
 
@@ -16,7 +16,8 @@ It allows you to customize the **build process**, **optimizations**, and **runti
 - **Flexibility** → Extend Next.js defaults with experimental features and plugins.
     
 - **Environment-specific config** → Different behavior in production, staging, or development.
-    
+	 
+- **Security enhancements** → Add HTTP headers like CSP, HSTS, and COOP for safer apps.
 
 ---
 
@@ -31,12 +32,36 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig: NextConfig = {
-  compress: true, // ✅ Enable gzip compression for responses
-  productionBrowserSourceMaps: true, // ✅ Useful for debugging errors in production
+  compress: true,
+  productionBrowserSourceMaps: true,
+  reactStrictMode: true,
   experimental: {
     optimizeCss: true, // ✅ Ensures Tailwind is tree-shaken and critical CSS is inlined
   },
-  // Add other config options here
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: `
+              default-src 'self';
+              script-src 'self' 'unsafe-inline' 'unsafe-eval';
+              style-src 'self' 'unsafe-inline';
+              img-src 'self' data:;
+              connect-src 'self';
+              font-src 'self';
+              frame-ancestors 'none';
+            `.replace(/\n/g, ''),
+          },
+          { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
@@ -46,36 +71,23 @@ module.exports = withBundleAnalyzer(nextConfig);
 
 ## 🛠️ Customization & Configuration
 
-- **`compress: true`**
+- **`compress: true`** → Enables gzip compression at the server level.
     
-    - Enables Gzip compression at the server level.
-        
-    - Reduces payload size for faster page loads.
-        
-- **`productionBrowserSourceMaps: true`**
+- **`productionBrowserSourceMaps: true`** → Generates source maps in production for debugging.
     
-    - Generates source maps in production.
-        
-    - Helps debug errors in error monitoring tools (e.g., Sentry, LogRocket).
-        
-- **`experimental.optimizeCss`**
+- **`experimental.optimizeCss`** → Optimizes CSS, reduces unused Tailwind classes.
     
-    - Optimizes CSS loading.
-        
-    - Ensures unused Tailwind classes are tree-shaken and reduces CSS bloat.
-        
-- **`@next/bundle-analyzer`**
+- **`@next/bundle-analyzer`** → Visualizes bundle composition; run with `ANALYZE=true npm run build`.
     
-    - Visualizes bundle composition.
+- **`headers()`** → Adds HTTP security headers:
+    
+    - **CSP (Content-Security-Policy)** → Restricts sources for scripts, styles, images, etc.
         
-    - Helps identify large dependencies.
+    - **HSTS (Strict-Transport-Security)** → Forces HTTPS connections.
         
-    - Run with:
+    - **X-Frame-Options** → Prevents clickjacking.
         
-        ```bash
-        ANALYZE=true npm run build
-        ```
-        
+    - **Cross-Origin-Opener-Policy** → Mitigates cross-origin attacks.
 
 ---
 
@@ -90,10 +102,14 @@ module.exports = withBundleAnalyzer(nextConfig);
 - ✅ Keep **experimental flags** under review — they may change or stabilize in later Next.js versions.
     
 - ✅ Organize config for **environment awareness** (production vs staging vs development).
-    
+	
+- ✅ Add **security headers** to protect against common web vulnerabilities.
 
 > [!warning]  
 > Avoid enabling unnecessary experimental features in production. Always test them in staging first.
+
+>[!warning]  
+>Review CSP rules carefully — overly strict policies can break scripts or styles.
 
 ---
 
@@ -102,13 +118,24 @@ module.exports = withBundleAnalyzer(nextConfig);
 ```js
 const isProd = process.env.NODE_ENV === 'production';
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   compress: true,
-  productionBrowserSourceMaps: !isProd ? true : false, // Debug only outside prod
+  productionBrowserSourceMaps: !isProd ? true : false,
+  reactStrictMode: true,
   experimental: {
     optimizeCss: true,
   },
-  reactStrictMode: true, // ✅ Helps catch potential issues in dev
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+        ],
+      },
+    ];
+  },
 };
 ```
 
@@ -121,6 +148,10 @@ const nextConfig = {
 - [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
     
 - [Next.js Performance Optimizations](https://nextjs.org/docs/app/building-your-application/optimizing)
+    
+- Content Security Policy (CSP) Guide
+    
+- HTTP Security Headers
     
 
 ---
@@ -135,9 +166,11 @@ const nextConfig = {
     
 - Integrating **Sentry** or error tracking with source maps.
     
+- Adding **CSP reporting** for monitoring violations.
+    
 
 ---
 
 ## 📚 Tags
 
-#nextjs #next-config #performance #bundle-analyzer #good-practices
+#nextjs #next-config #performance #bundle-analyzer #good-practices #security #csp #hsts #headers
