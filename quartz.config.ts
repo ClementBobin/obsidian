@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Mirage Garden",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,7 +16,11 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
+<<<<<<< HEAD
     baseUrl: "clementbobin.github.io",
+=======
+    baseUrl: "clementbobin.github.io/obsidian",
+>>>>>>> 93a2647c38cfaaf8b455520a3dbf94dfd9989c40
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
