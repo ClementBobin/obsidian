@@ -22,40 +22,19 @@
     },
     "iconInTabsEnabled": true
   },
-  "apps": "RiAppsFill",
   "asset": "FabFile",
-  "cloud": "FabCloudArrowUp",
-  "cloud/provider": "FabPaperPlane",
-  "databases": "FabDatabase",
-  "docker": "FabDocker",
   "error": "RiErrorWarningFill",
-  "hardware": "FabHardDrive",
   "infra": "FabBuilding",
-  "misc": "FabFolderOpen",
   "tools": "RiToolsFill",
   "asset/image": "FabImage",
   "asset/pdf": "FabFilePdf",
   "SIO Saint-benigne.md": "FabSchool",
-  "administra": "RiAdminFill",
-  "Project": "FabChessKing",
-  "OS/linux": "FabLinux",
-  "OS/windows": "FabWindows",
-  "OS": "FabOtter",
-  "OS/linux/distros/nixos": "FabSnowflake",
-  "OS/linux/distros": "RiHardDrive2Fill",
-  "OS/linux/window manager": "RiWindowsLine",
   "Project/blog/blog.md": {
     "iconName": null,
     "inheritanceIcon": "FabBlog"
   },
-  "docker/kubernetes": "FabShieldVirus",
-  "event": "FabBlog",
-  "Programming": "FabCode",
-  "Programming/Rules": "FabRuler",
   "Programming/Website": {
-    "iconName": "FabHtml5",
+    "iconName": null,
     "inheritanceIcon": "RiHtml5Line"
-  },
-  "Programming/encryption": "FabLock",
-  "Programming/language": "FabLanguage"
+  }
 }

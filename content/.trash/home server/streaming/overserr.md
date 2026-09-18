@@ -1,1 +1,0 @@
-[install](https://hub.docker.com/r/fallenbagel/jellyseerr)

@@ -1,1 +1,0 @@
-[install](https://sonarr.tv/#downloads-docker)
